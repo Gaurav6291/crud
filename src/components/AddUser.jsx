@@ -13,15 +13,15 @@ const useStyle = makeStyles({
 
 const initialValues = {
     name: '',
-    username: '',
-    email: '',
-    phone: ''
+    age: '',
+    gender: '',
+    city: ''
 }
 
 const AddUser = () => {
 
     const [user, setUser] = useState(initialValues);
-    const { name, username, email, phone } = user;
+    const { name, age, gender, city } = user;
 
     const classes = useStyle();
     const onValueChange = (e) => {
@@ -39,16 +39,16 @@ const addUserDetails = async () => {
                 <Input onChange={(e) => onValueChange(e)} name='name' value={name} />
             </FormControl>
             <FormControl>
-                <InputLabel>Username</InputLabel>
-                <Input onChange={(e) => onValueChange(e)} name='username' value={username} />
+                <InputLabel>Age</InputLabel>
+                <Input onChange={(e) => onValueChange(e)} name='age' value={age} />
             </FormControl>
             <FormControl>
-                <InputLabel>Name</InputLabel>
-                <Input onChange={(e) => onValueChange(e)} name='email' value={email} />
+                <InputLabel>Gender</InputLabel>
+                <Input onChange={(e) => onValueChange(e)} name='gender' value={gender} />
             </FormControl>
             <FormControl>
-                <InputLabel>Name</InputLabel>
-                <Input onChange={(e) => onValueChange(e)} name='phone' value={phone} />
+                <InputLabel>City</InputLabel>
+                <Input onChange={(e) => onValueChange(e)} name='city' value={city} />
             </FormControl>
            
             <Button onClick={()=>{addUserDetails()}} variant="contained" color="primary">Add User</Button>
