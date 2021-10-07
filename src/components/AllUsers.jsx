@@ -1,7 +1,9 @@
-import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material'
+import { Button, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { getUsers } from '../Service/api';
+import { deleteUser } from '../Service/api';
 import { makeStyles } from '@mui/styles'
+import {Link, useParams} from 'react-router-dom';
 
 const useStyle = makeStyles({
     table: {
@@ -26,7 +28,7 @@ const AllUsers = () => {
 
 const [users, setUsers] = useState([])
 const classes = useStyle();
-
+const { id } = useParams();
 useEffect(() => {
     getAllUsers();
 }, [])
@@ -36,15 +38,20 @@ useEffect(() => {
        console.log(response.data);
        setUsers(response.data);
     }
+    const deleteUserData = async (id) => {
+        await deleteUser(id);
+        getAllUsers();
+    }
     return (
        <Table className={classes.table}>
             <TableHead>
                 <TableRow className={classes.thead}>
                     <TableCell>Id</TableCell>
                     <TableCell>Name</TableCell>
-                    <TableCell>Username</TableCell>
-                    <TableCell>Email</TableCell>
-                    <TableCell>Phone</TableCell>
+                    <TableCell>Age</TableCell>
+                    <TableCell>Gender</TableCell>
+                    <TableCell>City</TableCell>
+                    <TableCell></TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
@@ -54,9 +61,13 @@ useEffect(() => {
                     <TableRow className={classes.row}>
                         <TableCell>{user.id}</TableCell>
                         <TableCell>{user.name}</TableCell>
-                        <TableCell>{user.username}</TableCell>
-                        <TableCell>{user.email}</TableCell>
-                        <TableCell>{user.phone}</TableCell>
+                        <TableCell>{user.age}</TableCell>
+                        <TableCell>{user.gender}</TableCell>
+                        <TableCell>{user.city}</TableCell>
+                        <TableCell>
+                            <Button variant="contained" color="primary" style={{marginRight: '10px'}} component={Link} to={`/edit/${user.id}`}>Edit</Button>
+                            <Button variant="contained" color="secondary" onClick={() => deleteUserData(user.id)}>Delete</Button>
+                        </TableCell>
                     </TableRow>
                 )))
             }

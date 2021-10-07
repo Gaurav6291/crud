@@ -1,25 +1,11 @@
 {
   "users": [
     {
-      "name": "Rohit Sharma",
-      "username": "hitman",
-      "email": "rohitsharma@gmail.com",
-      "phone": "1234567890",
-      "id": 1
-    },
-    {
       "name": "gaurav",
-      "username": "parmar",
-      "email": "pad@gdd.con",
-      "phone": "",
+      "age": "23",
+      "gender": "male",
+      "city": "dungarpur",
       "id": 2
-    },
-    {
-      "name": "gaurav",
-      "username": "parmar",
-      "email": "pad@gdd.con",
-      "phone": "9466111515",
-      "id": 3
     }
   ]
 }
